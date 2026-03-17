@@ -1,0 +1,123 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    zufallsgenerator-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-web-80"
+      tls: false
+      # middlewares:
+      #   - "zufallsgenerator-redirectHttps"
+    zufallsgenerator-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-web-8025"
+      tls: false
+      # middlewares:
+      #   - "zufallsgenerator-redirectHttps"
+    zufallsgenerator-web-5173-http:
+      entrypoints:
+        - http-5172
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-web-5173"
+      tls: false
+      # middlewares:
+      #   - "zufallsgenerator-redirectHttps"
+    zufallsgenerator-xhgui-80-http:
+      entrypoints:
+        - http-8143
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-xhgui-80"
+      tls: false
+      # middlewares:
+      #   - "zufallsgenerator-redirectHttps"
+    
+    
+    
+    
+    zufallsgenerator-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-web-80"
+      
+      tls: true
+      
+    zufallsgenerator-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-web-8025"
+      
+      tls: true
+      
+    zufallsgenerator-web-5173-https:
+      entrypoints:
+        - http-5173
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-web-5173"
+      
+      tls: true
+      
+    
+    zufallsgenerator-xhgui-80-https:
+      entrypoints:
+        - http-8142
+      rule: HostRegexp(`^zufallsgenerator\.ddev\.site$`)
+      
+      service: "zufallsgenerator-xhgui-80"
+      
+      tls: true
+      
+    
+
+  middlewares:
+    zufallsgenerator-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    zufallsgenerator-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-zufallsgenerator-web:80
+        
+    zufallsgenerator-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-zufallsgenerator-web:8025
+        
+    zufallsgenerator-web-5173:
+      loadbalancer:
+        servers:
+          - url: http://ddev-zufallsgenerator-web:5173
+        
+    
+    
+    
+    zufallsgenerator-xhgui-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-zufallsgenerator-xhgui:80
+        
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/zufallsgenerator.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/zufallsgenerator.key
