@@ -1,5 +1,6 @@
 <script setup>
 import Base from '../../Layouts/Base.vue';
+import Header from '../../Components/Header.vue';
 import { useForm, Form } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -25,8 +26,7 @@ const submitForm = () => {
 </script>
 <template>
     <Base>
-        <h1 class="text-4xl font-bold mb-8">Randomized Selector</h1>
-        <p class="text-lg">Select a random number of rows from your dataset.</p>
+        <Header title="Randomized Selector" description="Select a random number of rows from your dataset." />
         <Form @submit.prevent="submitForm" class="oof-form">
             <div class="mb-4 oof-form--group">
                 <label for="file">CSV File</label>

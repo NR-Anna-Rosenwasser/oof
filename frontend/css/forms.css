@@ -15,7 +15,7 @@ Form design defaults
     input,
     select,
     textarea {
-        @apply block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500
+        @apply block w-full p-2 rounded-md border-gray-300 border shadow-sm focus:border-blue-500
     }
 
     button {
